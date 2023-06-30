@@ -11,6 +11,9 @@ jobs:
     name: Test on Node
 
     runs-on: ubuntu-latest
+    
+    env:
+      NODE_OPTIONS: "--max-old-space-size=8192"
 
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: "15"
+          node-version: "10"
 
       - name: Install Node dependencies
         run: yarn --frozen-lockfile
