@@ -27,7 +27,7 @@ jobs:
           node-version: "14"
 
       - name: Install Node dependencies
-        run: yarn --frozen-lockfile
+        run: yarn
 
       - run: yarn lint
       - run: yarn build
