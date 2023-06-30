@@ -12,8 +12,10 @@ import {
   isFieldRangePredicate
 } from 'vega-lite/build/src/predicate';
 import {TimeUnit} from 'vega-lite/build/src/timeunit';
-import {FILTER_ADD, FILTER_MODIFY_TIME_UNIT,
-  FILTER_REMOVE, FilterAction} from '../../actions';
+import {
+  FILTER_ADD, FILTER_MODIFY_TIME_UNIT,
+  FILTER_REMOVE, FilterAction
+} from '../../actions';
 import {ActionHandler} from '../../actions/redux-action';
 import {DraggableType} from '../../constants';
 import {filterHasField, getDefaultList, getDefaultTimeRange} from '../../models/shelf/filter';
@@ -33,7 +35,7 @@ export interface FilterPaneDropTargetProps {
 
   isOver: boolean;
 
-  item: Object;
+  item: object;
 
   canDrop: boolean;
 }
@@ -43,7 +45,7 @@ export interface FilterPanePropsBase extends ActionHandler<FilterAction> {
   schema: Schema;
 }
 
-interface FilterPaneProps extends FilterPaneDropTargetProps, FilterPanePropsBase {};
+interface FilterPaneProps extends FilterPaneDropTargetProps, FilterPanePropsBase { };
 
 class FilterPaneBase extends React.PureComponent<FilterPaneProps, {}> {
 
@@ -105,14 +107,15 @@ class FilterPaneBase extends React.PureComponent<FilterPaneProps, {}> {
       this.filterModifyTimeUnit(tu, index);
     };
     const popupComponent =
-      fieldDef.type === ExpandedType.TEMPORAL &&
-      <FunctionPicker
-        fieldDefParts={{
-          fn: timeUnit,
-          type: ExpandedType.TEMPORAL
-        }}
-        onFunctionChange={onFunctionChange}
-      /> ;
+      fieldDef.type === ExpandedType.TEMPORAL && (
+        <FunctionPicker
+          fieldDefParts={{
+            fn: timeUnit,
+            type: ExpandedType.TEMPORAL
+          }}
+          onFunctionChange={onFunctionChange}
+        />
+      );
     let filterComponent;
     if (isFieldRangePredicate(filter)) {
       if (fieldDef.type === ExpandedType.TEMPORAL) {

@@ -207,7 +207,7 @@ describe('lib-voyager', () => {
         try {
           const voyagerInst = CreateVoyager(container, undefined, undefined);
 
-          const spec: Object = {
+          const spec: object = {
             "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
             "data": {
               "values": [
@@ -257,7 +257,7 @@ describe('lib-voyager', () => {
       const config = {};
       const data: any = undefined;
 
-      const spec: Object = {
+      const spec: object = {
         "FAIL$schema": "https://vega.github.io/schema/vega-lite/v2.json",
         "FAILdata": {"url": "node_modules/vega-datasets/data/movies.json"},
         "FAILmark": "bar",
@@ -284,7 +284,7 @@ describe('lib-voyager', () => {
       setTimeout(() => {
         try {
           const voyagerInst = CreateVoyager(container, undefined, undefined);
-          const spec: Object = {
+          const spec: object = {
             "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
             "data": {
               "values": [
@@ -358,7 +358,7 @@ describe('lib-voyager', () => {
     setTimeout(() => {
       try {
         const voyagerInst = CreateVoyager(container, undefined, undefined);
-        const spec: Object = {
+        const spec: object = {
           "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
           "data": {
             "values": [

@@ -56,7 +56,7 @@ class EncodingPanelBase extends React.PureComponent<EncodingPanelProps, {}> {
       <div styleName="shelf-group">
         <h3>Wildcard Shelves</h3>
         {[...anyEncodings.map((_, i) => i),
-          -1 // map the empty placeholder to -1
+        -1 // map the empty placeholder to -1
         ].map(this.wildcardShelf, this)}
       </div>
     );
@@ -64,7 +64,7 @@ class EncodingPanelBase extends React.PureComponent<EncodingPanelProps, {}> {
     return (
       <div className="pane" styleName="encoding-pane">
         <a className="right" onClick={this.onClear}>
-          <i className="fa fa-eraser"/>
+          <i className="fa fa-eraser" />
           {' '}
           Clear
         </a>
@@ -125,10 +125,10 @@ class EncodingPanelBase extends React.PureComponent<EncodingPanelProps, {}> {
   private markPicker() {
     const {handleAction, spec, specPreview} = this.props;
     const {mark} = specPreview || spec;
-    return <MarkPicker
+    return (<MarkPicker
       mark={mark}
       handleAction={handleAction}
-    />;
+    />);
   }
 
   private wildcardShelf(index: number) {

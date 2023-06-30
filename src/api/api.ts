@@ -20,7 +20,7 @@ export function fetchCompassQLRecommend(query: Query, schema: Schema, data: Inli
   if (config && config.serverUrl) {
     const endpoint = "recommend";
 
-    return fetch(`${config.serverUrl}/${endpoint}` , {
+    return fetch(`${config.serverUrl}/${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -52,7 +52,7 @@ export function fetchCompassQLRecommend(query: Query, schema: Schema, data: Inli
 /**
  * Submit schema building request from CompassQL
  */
-export function fetchCompassQLBuildSchema(data: Object[], config?: VoyagerConfig):
+export function fetchCompassQLBuildSchema(data: object[], config?: VoyagerConfig):
   Promise<Schema> {
 
   if (config && config.serverUrl) {

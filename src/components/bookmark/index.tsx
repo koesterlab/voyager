@@ -48,12 +48,12 @@ export class BookmarkBase extends React.PureComponent<BookmarkProps, any> {
             <a className="right" onClick={this.closeModal}>Close</a>
             <h3>Bookmarks ({this.props.bookmark.count})</h3>
             <a styleName="bookmark-list-util" onClick={this.onClearAll}>
-              <i className="fa fa-trash-o"/>
+              <i className="fa fa-trash-o" />
               {' '}
               Clear all
             </a>
             <a styleName="bookmark-list-util" onClick={this.onExport}>
-              <i className="fa fa-clipboard"/>
+              <i className="fa fa-clipboard" />
               {' '}
               Export
             </a>
@@ -107,7 +107,7 @@ export class BookmarkBase extends React.PureComponent<BookmarkProps, any> {
       return (
         <Plot
           bookmark={this.props.bookmark}
-          closeModal={this.closeModal.bind(this)}
+          closeModal={this.closeModal}
           data={data}
           filters={[]} /* Bookmark specs already have filters included */
           key={index}
@@ -125,8 +125,8 @@ export class BookmarkBase extends React.PureComponent<BookmarkProps, any> {
       <div>
         {
           (bookmarkPlotListItems.length > 0) ?
-           bookmarkPlotListItems :
-           <div styleName="vis-list-empty">You have no bookmarks</div>
+            bookmarkPlotListItems :
+            <div styleName="vis-list-empty">You have no bookmarks</div>
         }
       </div>
     );
