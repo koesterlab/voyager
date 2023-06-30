@@ -233,8 +233,11 @@ function getNextGroupId(): number {
   return _groupId;
 }
 
-function groupAction(action: Action, currentState: UndoableStateBase,
-  previousHistory: StateWithHistory<UndoableStateBase>): any {
+function groupAction(
+  action: Action,
+  currentState: UndoableStateBase,
+  previousHistory: StateWithHistory<UndoableStateBase>
+): any {
   const currentActionType = action.type;
 
   if (USER_ACTION_INDEX[currentActionType]) {

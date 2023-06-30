@@ -60,8 +60,10 @@ export class LogPaneBase extends React.PureComponent<LogPaneProps, {}> {
     });
   }
 
-  private returnLevelWarnings(warnings: {warn: string[], info: string[], debug: string[]},
-    level: WarningLevel): JSX.Element[] {
+  private returnLevelWarnings(
+    warnings: {warn: string[], info: string[], debug: string[]},
+    level: WarningLevel,
+  ): JSX.Element[] {
     return warnings[level].map((warning, index: number) => {
       return (
         <li key={index}>[{level.toUpperCase()}] {warning}</li>

@@ -250,25 +250,29 @@ export class PlotBase extends React.PureComponent<PlotProps, PlotState> {
     const {spec} = this.props;
     const channelDef = spec.encoding[channel];
     if (isFieldDef(channelDef) && isDiscrete(channelDef)) {
-      return (<i
-        title='Sort'
-        className="fa fa-sort-alpha-asc"
-        styleName={channel === 'x' ? 'sort-x-command' : 'command'}
-        onClick={this.onSort.bind(this, channel)}
-      />);
+      return (
+        <i
+          title='Sort'
+          className="fa fa-sort-alpha-asc"
+          styleName={channel === 'x' ? 'sort-x-command' : 'command'}
+          onClick={this.onSort.bind(this, channel)}
+        />
+      );
     }
     return undefined;
   }
 
   private renderSpecifyButton() {
-    return (<i
-      title='Specify'
-      className="fa fa-server"
-      styleName="specify-command"
-      onClick={this.onSpecify}
-      onMouseEnter={this.onPreviewMouseEnter}
-      onMouseLeave={this.onPreviewMouseLeave}
-    />);
+    return (
+      <i
+        title='Specify'
+        className="fa fa-server"
+        styleName="specify-command"
+        onClick={this.onSpecify}
+        onMouseEnter={this.onPreviewMouseEnter}
+        onMouseLeave={this.onPreviewMouseLeave}
+      />
+    ;
   }
 
   private renderBookmarkButton() {

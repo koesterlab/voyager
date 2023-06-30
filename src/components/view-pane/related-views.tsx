@@ -16,7 +16,9 @@ import {selectResult} from '../../selectors/result';
 import {PlotList} from '../plot-list/index';
 import * as styles from './related-views.scss';
 
-export interface RelatedViewsProps extends ActionHandler<BookmarkAction | ShelfAction | ShelfPreviewAction | ResultAction> {
+export interface RelatedViewsProps extends ActionHandler<
+  BookmarkAction | ShelfAction | ShelfPreviewAction | ResultAction
+> {
   results: {
     [k in ResultType]: Result
   };

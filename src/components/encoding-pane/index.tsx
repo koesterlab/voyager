@@ -125,10 +125,12 @@ class EncodingPanelBase extends React.PureComponent<EncodingPanelProps, {}> {
   private markPicker() {
     const {handleAction, spec, specPreview} = this.props;
     const {mark} = specPreview || spec;
-    return (<MarkPicker
-      mark={mark}
-      handleAction={handleAction}
-    />);
+    return (
+      <MarkPicker
+        mark={mark}
+        handleAction={handleAction}
+      />
+    );
   }
 
   private wildcardShelf(index: number) {
