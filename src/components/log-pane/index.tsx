@@ -18,7 +18,7 @@ export class LogPaneBase extends React.PureComponent<LogPaneProps, {}> {
     const errors = this.props.log.errors;
     const warningPane = warnings.warn.length > 0 || warnings.debug.length > 0 || warnings.info.length > 0 ? (
       <div styleName='warning-pane'>
-        <a styleName='close' onClick={this.closeWarnings.bind(this)}>x</a>
+        <a styleName='close' onClick={this.closeWarnings}>x</a>
         <ul>
           {this.returnLevelWarnings(warnings, 'warn')}
           {this.returnLevelWarnings(warnings, 'info')}
@@ -29,7 +29,7 @@ export class LogPaneBase extends React.PureComponent<LogPaneProps, {}> {
 
     const errorPane = errors.length > 0 ? (
       <div styleName='error-pane'>
-        <a styleName='close' onClick={this.closeErrors.bind(this)}>x</a>
+        <a styleName='close' onClick={this.closeErrors}>x</a>
         <ul>
           {errors.map((error, index) => {
             return (
@@ -60,8 +60,10 @@ export class LogPaneBase extends React.PureComponent<LogPaneProps, {}> {
     });
   }
 
-  private returnLevelWarnings(warnings: {warn: string[], info: string[], debug: string[]},
-                              level: WarningLevel): JSX.Element[] {
+  private returnLevelWarnings(
+    warnings: {warn: string[], info: string[], debug: string[]},
+    level: WarningLevel,
+  ): JSX.Element[] {
     return warnings[level].map((warning, index: number) => {
       return (
         <li key={index}>[{level.toUpperCase()}] {warning}</li>

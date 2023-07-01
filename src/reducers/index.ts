@@ -217,7 +217,7 @@ export const USER_ACTIONS: ActionType[] = [
 ];
 
 
-export const USER_ACTION_INDEX: Object = toSet(USER_ACTIONS);
+export const USER_ACTION_INDEX: object = toSet(USER_ACTIONS);
 
 /**
  * Actions that are to be grouped with actions that precede them. (Usually for async actions.)
@@ -233,8 +233,11 @@ function getNextGroupId(): number {
   return _groupId;
 }
 
-function groupAction(action: Action, currentState: UndoableStateBase,
-                     previousHistory: StateWithHistory<UndoableStateBase>): any {
+function groupAction(
+  action: Action,
+  currentState: UndoableStateBase,
+  previousHistory: StateWithHistory<UndoableStateBase>
+): any {
   const currentActionType = action.type;
 
   if (USER_ACTION_INDEX[currentActionType]) {

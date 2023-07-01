@@ -21,7 +21,7 @@ export class TypeChangerBase extends React.PureComponent<TypeChangerProps, {}> {
           return (
             <label key={validType}>
               <input type='radio' value={validType} name='type'
-                onChange={this.onTypeChange.bind(this)}
+                onChange={this.onTypeChange}
                 checked={this.props.type === validType}
               />
               <span styleName='type'> {validType} </span>

@@ -30,7 +30,7 @@ export interface EncodingShelfDropTargetProps {
 
   isOver: boolean;
 
-  item: Object;
+  item: object;
 }
 
 export interface EncodingShelfPropsBase extends ActionHandler<SpecEncodingAction> {
@@ -43,7 +43,7 @@ export interface EncodingShelfPropsBase extends ActionHandler<SpecEncodingAction
   schema: Schema;
 }
 
-interface EncodingShelfProps extends EncodingShelfPropsBase, EncodingShelfDropTargetProps {};
+interface EncodingShelfProps extends EncodingShelfPropsBase, EncodingShelfDropTargetProps { };
 
 export interface EncodingShelfState {
   customizerIsOpened: boolean;
@@ -92,22 +92,27 @@ class EncodingShelfBase extends React.PureComponent<
             targetAttachment="bottom left"
           >
             {(fieldDef && !isWildcardChannelId(id) && contains(CUSTOMIZABLE_ENCODING_CHANNELS, id.channel)) ?
-              <span onClick={this.toggleCustomizer} ref={this.fieldHandler}>
-                {channelName}{' '} <i className={'fa fa-caret-down'}/>
-              </span> :
-              <span>
-                {channelName}
-              </span>
+              (
+                <span onClick={this.toggleCustomizer} ref={this.fieldHandler}>
+                  {channelName}{' '} <i className={'fa fa-caret-down'} />
+                </span>
+              ) : (
+                <span>
+                  {channelName}
+                </span>
+              )
             }
 
             {this.state.customizerIsOpened &&
-            <div ref={this.popupRefHandler}>
-              <FieldCustomizer
-                shelfId={id}
-                fieldDef={fieldDef}
-                handleAction={handleAction}
-              />
-            </div>
+              (
+                <div ref={this.popupRefHandler}>
+                  <FieldCustomizer
+                    shelfId={id}
+                    fieldDef={fieldDef}
+                    handleAction={handleAction}
+                  />
+                </div>
+              )
             }
           </TetherComponent>
         </div>
@@ -185,11 +190,13 @@ class EncodingShelfBase extends React.PureComponent<
     const renderFunctionPicker = fieldDef.type === 'quantitative' || fieldDef.type === 'temporal';
 
     const functionPicker = renderFunctionPicker ?
-      <FunctionPicker
-        fieldDefParts={fieldDef}
-        onFunctionChange={this.onFunctionChange.bind(this)}
-        wildcardHandler={this}
-      /> : null;
+      (
+        <FunctionPicker
+          fieldDefParts={fieldDef}
+          onFunctionChange={this.onFunctionChange}
+          wildcardHandler={this}
+        />
+      ) : null;
     return (
       <div styleName='field-wrapper'>
         <Field
@@ -199,7 +206,7 @@ class EncodingShelfBase extends React.PureComponent<
           isPill={true}
           schema={schema}
           popupComponent={functionPicker}
-          onRemove={this.onRemove.bind(this)}
+          onRemove={this.onRemove}
           parentId={{type: FieldParentType.ENCODING_SHELF as FieldParentType.ENCODING_SHELF, id: id}}
         />
       </div>

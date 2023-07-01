@@ -17,7 +17,7 @@ import {Data} from 'vega-lite/build/src/data';
 import {FacetedCompositeUnitSpec, isUnitSpec, TopLevel} from 'vega-lite/build/src/spec';
 import * as vlSchema from 'vega-lite/build/vega-lite-schema.json';
 import {isString} from 'vega-util';
-import { REDO, UNDO } from './actions/index';
+import {REDO, UNDO} from './actions/index';
 import {App} from './components/app';
 import {State} from './models';
 import {DEFAULT_VOYAGER_CONFIG, VoyagerConfig} from './models/config';
@@ -112,7 +112,7 @@ export class Voyager {
    *
    * @memberof Voyager
    */
-  public setSpec(spec: Object) {
+  public setSpec(spec: object) {
 
     const ajv = new Ajv({
       validateSchema: true,
@@ -214,7 +214,7 @@ export class Voyager {
    *
    * @memberof Voyager
    */
-  public onStateChange(onChange: (state: SerializableState) => void): Function {
+  public onStateChange(onChange: (state: SerializableState) => void): () => void {
     let currentState: State;
 
     const handleChange = () => {

@@ -50,19 +50,19 @@ export class OneOfFilterShelfBase extends React.PureComponent<OneOfFilterShelfPr
       <div id={index.toString()}>
         <div styleName='below-header'>
           <span>
-            <a styleName='select-all' onClick={this.onSelectAll.bind(this)}>
+            <a styleName='select-all' onClick={this.onSelectAll}>
               Select All
             </a> /
-            <a styleName='clear-all' onClick={this.onClearAll.bind(this)}>
+            <a styleName='clear-all' onClick={this.onClearAll}>
               Clear All
             </a>
           </span>
           {this.state.hideSearchBar ?
             null :
-            <input type='text' onChange={this.onSearch.bind(this)} autoFocus={true}/>
+            <input type='text' onChange={this.onSearch} autoFocus={true} />
           }
-          <a styleName='search' onClick={this.onClickSearch.bind(this)}>
-            <i className='fa fa-search'/>
+          <a styleName='search' onClick={this.onClickSearch}>
+            <i className='fa fa-search' />
           </a>
         </div>
         {oneOfFilter}

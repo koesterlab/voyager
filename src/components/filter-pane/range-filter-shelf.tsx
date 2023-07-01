@@ -7,8 +7,10 @@ import * as TetherComponent from 'react-tether';
 import {DateTime} from 'vega-lite/build/src/datetime';
 import {FieldRangePredicate} from 'vega-lite/build/src/predicate';
 import {TimeUnit} from 'vega-lite/build/src/timeunit';
-import {FILTER_MODIFY_EXTENT, FILTER_MODIFY_MAX_BOUND, FILTER_MODIFY_MIN_BOUND,
-  FilterAction} from '../../actions';
+import {
+  FILTER_MODIFY_EXTENT, FILTER_MODIFY_MAX_BOUND, FILTER_MODIFY_MIN_BOUND,
+  FilterAction
+} from '../../actions';
 import {ActionHandler} from '../../actions/redux-action';
 import {convertToDateTimeObject, convertToTimestamp} from '../../models/shelf/filter';
 import * as styles from './range-filter-shelf.scss';
@@ -78,7 +80,7 @@ export class RangeFilterShelfBase extends React.PureComponent<RangeFilterShelfPr
           defaultValue={[currMin, currMax]}
           min={lowerBound}
           max={upperBound}
-          onAfterChange={this.filterModifyExtent.bind(this)}
+          onAfterChange={this.filterModifyExtent}
           tipFormatter={this.getFormat(renderDateTimePicker, filter.timeUnit)}
           step={this.getStep(filter.timeUnit)}
         />
@@ -171,8 +173,8 @@ export class RangeFilterShelfBase extends React.PureComponent<RangeFilterShelfPr
     }
     return (
       <div>
-      {bound}:
-        <a onClick={this.focusInput.bind(this, `${filter.field}_${bound}`)}><i className="fa fa-pencil"/></a>
+        {bound}:
+        <a onClick={this.focusInput.bind(this, `${filter.field}_${bound}`)}><i className="fa fa-pencil" /></a>
         <input
           id={`${filter.field}_${bound}`}
           type='number'
@@ -201,19 +203,21 @@ export class RangeFilterShelfBase extends React.PureComponent<RangeFilterShelfPr
         >
           <div styleName='bound'>
             {bound}:
-            <a onClick={dataTimePickerOpenAction}><i className="fa fa-pencil"/></a>
+            <a onClick={dataTimePickerOpenAction}><i className="fa fa-pencil" /></a>
             {date.toString()}
           </div>
           {dateTimePickerOpen &&
-            <div styleName='date-time-picker-wrapper'>
-              <DateTimePicker
-                defaultValue={date}
-                timeFormat={this.showTime(this.props.filter.timeUnit)}
-                open={false}
-                onChange={onChangeAction}
-                disableOnClickOutside={false}
-              />
-            </div>
+            (
+              <div styleName='date-time-picker-wrapper'>
+                <DateTimePicker
+                  defaultValue={date}
+                  timeFormat={this.showTime(this.props.filter.timeUnit)}
+                  open={false}
+                  onChange={onChangeAction}
+                  disableOnClickOutside={false}
+                />
+              </div>
+            )
           }
         </TetherComponent>
       </div>

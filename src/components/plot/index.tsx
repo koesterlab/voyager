@@ -136,7 +136,7 @@ export class PlotBase extends React.PureComponent<PlotProps, PlotState> {
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
         >
-          <VegaLite spec={spec} logger={this.plotLogger} data={data}/>
+          <VegaLite spec={spec} logger={this.plotLogger} data={data} />
         </div>
         {notesDiv}
       </div>
@@ -250,25 +250,29 @@ export class PlotBase extends React.PureComponent<PlotProps, PlotState> {
     const {spec} = this.props;
     const channelDef = spec.encoding[channel];
     if (isFieldDef(channelDef) && isDiscrete(channelDef)) {
-      return <i
-        title='Sort'
-        className="fa fa-sort-alpha-asc"
-        styleName={channel === 'x' ? 'sort-x-command' : 'command'}
-        onClick={this.onSort.bind(this, channel)}
-      />;
+      return (
+        <i
+          title='Sort'
+          className="fa fa-sort-alpha-asc"
+          styleName={channel === 'x' ? 'sort-x-command' : 'command'}
+          onClick={this.onSort.bind(this, channel)}
+        />
+      );
     }
     return undefined;
   }
 
   private renderSpecifyButton() {
-    return <i
-      title='Specify'
-      className="fa fa-server"
-      styleName="specify-command"
-      onClick={this.onSpecify}
-      onMouseEnter={this.onPreviewMouseEnter}
-      onMouseLeave={this.onPreviewMouseLeave}
-    />;
+    return (
+      <i
+        title='Specify'
+        className="fa fa-server"
+        styleName="specify-command"
+        onClick={this.onSpecify}
+        onMouseEnter={this.onPreviewMouseEnter}
+        onMouseLeave={this.onPreviewMouseLeave}
+      />
+    ;
   }
 
   private renderBookmarkButton() {
@@ -313,7 +317,7 @@ export class PlotBase extends React.PureComponent<PlotProps, PlotState> {
     // Can only generate the text only when the button is clicked?
     return (
       <CopyToClipboard
-        onCopy={this.copied.bind(this)}
+        onCopy={this.copied}
         text={JSON.stringify(this.specWithFilter, null, 2)}>
         <i title='Copy' className='fa fa-clipboard' />
       </CopyToClipboard>

@@ -21,7 +21,7 @@ import {selectFilters} from '../../selectors/shelf';
 import {Plot} from '../plot';
 import * as styles from './plot-list.scss';
 
-export interface PlotListOwnProps extends ActionHandler<ShelfAction|ResultAction> {
+export interface PlotListOwnProps extends ActionHandler<ShelfAction | ResultAction> {
   result: Result;
 
   resultType?: ResultType;
@@ -69,10 +69,12 @@ export class PlotListBase extends React.PureComponent<PlotListProps, any> {
       <div>
         <div styleName="plot-list">
           {isLoading ?
-            <div styleName='plot-list-loading'>
-              <ClipLoader color={SPINNER_COLOR}/>
-            </div> :
-          plotListItems}
+            (
+              <div styleName='plot-list-loading'>
+                <ClipLoader color={SPINNER_COLOR} />
+              </div>
+            ) :
+            plotListItems}
         </div>
         {plots && plots.length > limit && (
           <a styleName="load-more" onClick={this.onLoadMore}>

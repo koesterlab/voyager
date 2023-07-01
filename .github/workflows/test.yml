@@ -24,10 +24,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: "10"
+          node-version: "14"
 
       - name: Install Node dependencies
-        run: yarn --frozen-lockfile
+        run: yarn
 
       - run: yarn lint
       - run: yarn build

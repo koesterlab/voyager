@@ -16,7 +16,9 @@ import {selectResult} from '../../selectors/result';
 import {PlotList} from '../plot-list/index';
 import * as styles from './related-views.scss';
 
-export interface RelatedViewsProps extends ActionHandler<BookmarkAction|ShelfAction|ShelfPreviewAction|ResultAction> {
+export interface RelatedViewsProps extends ActionHandler<
+  BookmarkAction | ShelfAction | ShelfPreviewAction | ResultAction
+> {
   results: {
     [k in ResultType]: Result
   };
@@ -33,31 +35,34 @@ export class RelatedViewsBase extends React.PureComponent<RelatedViewsProps, {}>
       const result = results[relatedViewType];
       const {isLoading, plots} = result;
       return (
-        (isLoading || plots && plots.length > 0) && <div styleName="related-views-subpane" key={relatedViewType}>
-          <div>
-            <h3>
-              {title}
-            </h3>
-            {
-              relatedViewType !== 'histograms' &&
-              <i
-                title='Specify'
-                styleName='command'
-                className="fa fa-server"
-                onClick={this.onSpecify.bind(this, relatedViewType)}
-                onMouseEnter={this.onPreviewMouseEnter.bind(this, relatedViewType)}
-                onMouseLeave={this.onPreviewMouseLeave.bind(this, relatedViewType)}
-              />
-            }
-          </div>
+        (isLoading || plots && plots.length > 0) && (
+          <div styleName="related-views-subpane" key={relatedViewType}>
+            <div>
+              <h3>
+                {title}
+              </h3>
+              {
+                relatedViewType !== 'histograms' && (
+                  <i
+                    title='Specify'
+                    styleName='command'
+                    className="fa fa-server"
+                    onClick={this.onSpecify.bind(this, relatedViewType)}
+                    onMouseEnter={this.onPreviewMouseEnter.bind(this, relatedViewType)}
+                    onMouseLeave={this.onPreviewMouseLeave.bind(this, relatedViewType)}
+                  />
+                )
+              }
+            </div>
 
-          <PlotList
-            handleAction={handleAction}
-            bookmark={bookmark}
-            resultType={relatedViewType}
-            result={result}
-          />
-        </div>
+            <PlotList
+              handleAction={handleAction}
+              bookmark={bookmark}
+              resultType={relatedViewType}
+              result={result}
+            />
+          </div>
+        )
       );
     });
 
@@ -103,5 +108,5 @@ export const RelatedViews = connect(
       bookmark: selectBookmark(state)
     };
   },
-  createDispatchHandler<BookmarkAction|ShelfAction>()
+  createDispatchHandler<BookmarkAction | ShelfAction>()
 )(CSSModules(RelatedViewsBase, styles));
